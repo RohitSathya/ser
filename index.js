@@ -6,6 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/create-checkout-session', async (req, res) => {
+  res.json("hi")
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items: [
@@ -25,7 +26,7 @@ app.post('/create-checkout-session', async (req, res) => {
     cancel_url: 'http://localhost:5173/cancel',
   });
 
-  res.json({ id: session.id });
+  
 });
 
 const PORT = process.env.PORT || 4242;
