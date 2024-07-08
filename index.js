@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-app.post('/create-checkout-session', async (req, res) => {
+app.get('/create-checkout-session', async (req, res) => {
   res.json("hi")
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -22,8 +22,7 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: 'http://localhost:5173/success',
-    cancel_url: 'http://localhost:5173/cancel',
+    
   });
 
   
